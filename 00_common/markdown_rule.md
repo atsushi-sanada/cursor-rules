@@ -61,7 +61,7 @@ function hello() {
 
 ---
 
-## 🔍 品質チェックリスト
+## 品質チェックリスト
 - [ ] H1～H4の順序が飛ばされていないか
 - [ ] コードブロックはフェンス付きかつ言語指定があるか
 - [ ] インラインコードとブロックコードが適切に区別されているか
@@ -70,7 +70,7 @@ function hello() {
 
 ---
 
-## 📚 参考資料
+## 参考資料
 - CommonMark Spec: https://spec.commonmark.org/
 - GitHub Flavored Markdown: https://github.github.com/gfm/
 - MDN Markdown Guide: https://developer.mozilla.org/ja/docs/Markdown 

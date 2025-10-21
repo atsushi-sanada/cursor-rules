@@ -4,14 +4,14 @@ CursorエディタでのGoogle Apps Script開発におけるコーディング�
 
 ---
 
-## 🎯 コーディング方針
+## コーディング方針
 * **関数単位で役割を明確化**
 * **再利用性・変更容易性を最重視**
 * **最小限の権限で実行**
 
 ---
 
-## 📋 ルールセット
+## ルールセット
 
 ### 1. フォーマット（Formatting）
 * インデント：スペース2つ
@@ -92,7 +92,7 @@ function processForm(formData) {
 
 ---
 
-## 🔍 品質チェックリスト
+## 品質チェックリスト
 - [ ] インデントがスペース2つで統一されているか
 - [ ] `let` / `const` を適切に使い分けているか
 - [ ] JSDocコメントが記述されているか
@@ -104,9 +104,9 @@ function processForm(formData) {
 
 ---
 
-## 📚 参考資料
-* Google Apps Script ガイド: https://developers.google.com/apps-script
-* JSDoc: https://jsdoc.app
-* Prettier: https://prettier.io
-* ESLint: https://eslint.org
-* clasp: https://github.com/google/clasp 
+## 参考資料
+- Google Apps Script ガイド: https://developers.google.com/apps-script
+- JSDoc: https://jsdoc.app
+- Prettier: https://prettier.io
+- ESLint: https://eslint.org
+- clasp: https://github.com/google/clasp 

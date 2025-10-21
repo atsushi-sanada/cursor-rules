@@ -4,14 +4,14 @@ CursorエディタでのJavaScript開発におけるコーディングルール�
 
 ---
 
-## 🎯 コーディング方針
+## コーディング方針
 * **可読性**：誰が見ても理解しやすいコード
 * **保守性**：変更・拡張が容易な構造
 * **一貫性**：チーム全体で統一されたスタイル
 
 ---
 
-## 📋 ルールセット
+## ルールセット
 
 ### 1. フォーマット（Formatting）
 * インデント：スペース2つ
@@ -33,7 +33,7 @@ CursorエディタでのJavaScript開発におけるコーディングルール�
 ### 3. モジュール構造（Modules）
 * ES6+ モジュールを使用
   ```js
-  // ✅ 良い例
+  // 良い例
   import { fetchData } from './api-service.js';
   export function init() { /* ... */ }
   ```
@@ -99,7 +99,7 @@ CursorエディタでのJavaScript開発におけるコーディングルール�
 
 ---
 
-## 🔍 品質チェックリスト
+## 品質チェックリスト
 - [ ] ESLintエラーがないか
 - [ ] Prettierでフォーマット済みか
 - [ ] JSDocコメントが適切か
@@ -111,8 +111,8 @@ CursorエディタでのJavaScript開発におけるコーディングルール�
 
 ---
 
-## 📚 参考資料
-* Airbnb JavaScript Style Guide: https://github.com/airbnb/javascript
-* ESLint: https://eslint.org/
-* Prettier: https://prettier.io/
-* MDN Web Docs: https://developer.mozilla.org/ja/ 
+## 参考資料
+- Airbnb JavaScript Style Guide: https://github.com/airbnb/javascript
+- ESLint: https://eslint.org/
+- Prettier: https://prettier.io/
+- MDN Web Docs: https://developer.mozilla.org/ja/ 

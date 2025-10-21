@@ -4,7 +4,7 @@ Cursorエディタ向けの共通開発ルール集。チーム開発での品�
 
 ---
 
-## 📌 Features / 特徴
+## Features / 特徴
 
 - 統一されたルールセットで可読性・保守性を担保
 - 多言語・複数プロジェクトに対応
@@ -12,7 +12,7 @@ Cursorエディタ向けの共通開発ルール集。チーム開発での品�
 
 ---
 
-## 🚀 Getting Started / はじめに
+## Getting Started / はじめに
 
 ### 必要環境（Requirements）
 
@@ -31,7 +31,7 @@ cd cursor-rules
 
 ---
 
-## 📂 Project Structure / プロジェクト構成
+## Project Structure / プロジェクト構成
 
 ```
 cursor-rules/
@@ -44,37 +44,37 @@ cursor-rules/
 
 ---
 
-## 🧪 Usage / 使い方
+## Usage / 使い方
 
 各フォルダの `.md` ファイルをCursorのルールなどにコピペして使用してください
 
 ---
 
-## 📝 Configuration / 設定方法
+## Configuration / 設定方法
 
 環境ごとの設定は `config/` または各プロジェクトフォルダ内の `config/` を利用して管理してください。
 
 ---
 
-## 🤝 Contributing / 貢献
+## Contributing / 貢献
 
 プルリクエスト・Issue を歓迎します。変更を加える際は各ルールファイルに対してレビューを依頼してください。
 
 ---
 
-## 📃 License
+## License
 
 MIT License
 
 ---
 
-## 👤 Author / クレジット
+## Author / クレジット
 
 * 真田 淳史（[@atsushi-sanada](https://github.com/atsushi-sanada)）
 
 ---
 
-## 📎 References / 関連リンク
+## References / 関連リンク
 
 * [Cursor Editor](https://cursor.sh/)
 * [Google Style Guides](https://github.com/google/styleguide) 

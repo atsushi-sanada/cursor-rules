@@ -4,14 +4,14 @@ CursorエディタでのUnity開発におけるC#コード作成ルール。可�
 
 ---
 
-## 🎯 コーディング方針
+## コーディング方針
 * **誰が見てもわかるコード**
 * **単一責任・疎結合を意識（SRP, DI）**
 * **実行時パフォーマンスを常に考慮**
 
 ---
 
-## 📝 命名規則
+## 命名規則
 * クラス/構造体/enum: **PascalCase**（例: `PlayerController`）
 * メソッド/プロパティ: **PascalCase**（例: `GetHealth()`）
 * public フィールド: **PascalCase**（※Inspector公開は `[SerializeField] private` を推奨）
@@ -22,7 +22,7 @@ CursorエディタでのUnity開発におけるC#コード作成ルール。可�
 
 ---
 
-## 📂 フォルダ構成
+## フォルダ構成
 * Assets/Scripts/
   * 機能別フォルダ：`Player/`, `UI/`, `Managers/` など
 * Assets/Scenes/：シーンファイル
@@ -31,7 +31,7 @@ CursorエディタでのUnity開発におけるC#コード作成ルール。可�
 
 ---
 
-## 🔧 MonoBehaviour 設計
+## MonoBehaviour 設計
 * **ライフサイクル順のメソッド記述**
   1. [Header]/[SerializeField]付きフィールド
   2. public プロパティ
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
 ---
 
-## 🛠 データ管理
+## データ管理
 * **設定値は ScriptableObject** を活用し、Inspector から変更可能に
 * **ハードコード禁止**：`const`/`readonly`/ScriptableObject/Config ファイル 等で管理
 * **Resources.Load の乱用禁止**：Addressables を推奨
@@ -84,7 +84,7 @@ public class GameConfig : ScriptableObject
 
 ---
 
-## 🚀 パフォーマンス最適化
+## パフォーマンス最適化
 * **GC Alloc 回避**：毎フレームの配列・List生成を避ける
 * **foreach** は注意、`for` か事前キャッシュを活用
 * **Update 内は軽量処理のみ**、重い処理は Coroutine へ
@@ -105,14 +105,14 @@ private void Move()
 
 ---
 
-## 🎨 UI 開発ガイド
+## UI 開発ガイド
 * **View/Controller 分離**：UIスクリプトは機能単位で分割
 * **UI要素は SerializeField で参照**
 * **イベントハンドラは UnityEvent またはデリゲート**
 
 ---
 
-## ⚠️ エラーハンドリング・ログ
+## エラーハンドリング・ログ
 * **Debug.Log 系は開発時のみ**：`#if UNITY_EDITOR` で包む
 * **常に `UnityEngine.Debug` フルパス**
 * **ログレベルを使い分け**：`Log`/`LogWarning`/`LogError`
@@ -125,7 +125,7 @@ UnityEngine.Debug.Log("Editor only log");
 
 ---
 
-## 🔍 品質チェックリスト
+## 品質チェックリスト
 - [ ] 名前空間が適切に設定されているか
 - [ ] SerializeField 付き private フィールドが正しく使われているか
 - [ ] 未使用のライフサイクルメソッドが残っていないか
@@ -137,7 +137,7 @@ UnityEngine.Debug.Log("Editor only log");
 
 ---
 
-## 📚 参考資料
-* Unity C# コーディング規約（公式）: https://docs.unity3d.com/ja/current/Manual/CSharpCodingConvention.html
-* Unity Performance Best Practices: https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity.html
-* ScriptableObject Patterns: https://unity.com/> 
+## 参考資料
+- Unity C# コーディング規約（公式）: https://docs.unity3d.com/ja/current/Manual/CSharpCodingConvention.html
+- Unity Performance Best Practices: https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity.html
+- ScriptableObject Patterns: https://unity.com/> 
