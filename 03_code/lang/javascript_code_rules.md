@@ -110,9 +110,3 @@ CursorエディタでのJavaScript開発におけるコーディングルール�
 - [ ] テストが十分にカバレッジを確保しているか
 
 ---
-
-## 参考資料
-- Airbnb JavaScript Style Guide: https://github.com/airbnb/javascript
-- ESLint: https://eslint.org/
-- Prettier: https://prettier.io/
-- MDN Web Docs: https://developer.mozilla.org/ja/ 

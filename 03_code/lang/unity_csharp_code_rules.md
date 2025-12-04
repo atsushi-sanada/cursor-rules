@@ -136,8 +136,3 @@ UnityEngine.Debug.Log("Editor only log");
 - [ ] ログ出力が本番ビルドで制限されているか
 
 ---
-
-## 参考資料
-- Unity C# コーディング規約（公式）: https://docs.unity3d.com/ja/current/Manual/CSharpCodingConvention.html
-- Unity Performance Best Practices: https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity.html
-- ScriptableObject Patterns: https://unity.com/> 

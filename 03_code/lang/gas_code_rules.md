@@ -103,10 +103,3 @@ function processForm(formData) {
 - [ ] Prettier / ESLint による自動整形が適用されているか
 
 ---
-
-## 参考資料
-- Google Apps Script ガイド: https://developers.google.com/apps-script
-- JSDoc: https://jsdoc.app
-- Prettier: https://prettier.io
-- ESLint: https://eslint.org
-- clasp: https://github.com/google/clasp 
