@@ -1,6 +1,6 @@
-# Cursor Rules / カーソルルール
+# Rules / 開発ルール集
 
-Cursor エディタ向けの共通開発ルール集。チーム開発での品質と効率を向上させます。
+エディタ/IDE での開発における共通ルール集。チーム開発での品質と効率を向上させます。
 
 ---
 
@@ -16,7 +16,7 @@ Cursor エディタ向けの共通開発ルール集。チーム開発での品�
 
 ### 必要環境（Requirements）
 
-- Cursor エディタ
+- エディタ/IDE
 - Git
 - （任意）Node.js v18+、Python 3.10+、Docker
 
@@ -27,7 +27,7 @@ git clone https://github.com/atsushi-sanada/cursor-rules.git
 cd cursor-rules
 ```
 
-必要に応じて各ルールファイルを参照し、プロジェクトに適用してください。
+必要に応じて各ルールファイルを選択し、プロジェクトに適用してください。
 
 ---
 
@@ -46,7 +46,7 @@ cursor-rules/
 
 ## Usage / 使い方
 
-各フォルダの `.md` ファイルを Cursor のルールなどにコピペして使用してください
+各フォルダの `.md` ファイルを、利用する環境（エディタ/IDE、プロジェクト標準ドキュメント等）に合わせてコピペして使用してください
 
 ---
 
@@ -76,5 +76,4 @@ MIT License
 
 ## References / 関連リンク
 
-- [Cursor Editor](https://cursor.sh/)
 - [Google Style Guides](https://github.com/google/styleguide)

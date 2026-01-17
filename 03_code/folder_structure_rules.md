@@ -9,7 +9,7 @@
 - 環境別設定：`dev/` / `prod/` を分離するか、`config/` で制御
 - ルート直下：最低限 `README.md`, `.gitignore` を配置
 - 明示的分離：`tests/`, `docs/`, `scripts/` を必ず独立フォルダにする
-- ネストは最大2階層までに留める
+- ネストは 責務の単位で**最大2階層まで** に留める（例：`src/features/` まで、`app/` まで）
 
 ---
 
@@ -34,11 +34,11 @@ project/
 ```
 project/
 ├── app/                 # アプリ本体
-├── api/             # ルーティング
-├── models/          # ORMモデル
-├── services/        # ビジネスロジック
-├── core/            # 設定・依存定義
-└── utils/           # 共通ユーティリティ
+│   ├── api/              # ルーティング
+│   ├── models/           # ORMモデル
+│   ├── services/         # ビジネスロジック
+│   ├── core/             # 設定・依存定義
+│   └── utils/            # 共通ユーティリティ
 ├── tests/               # pytest用テスト
 ├── scripts/             # バッチ／スクリプト
 ├── requirements.txt     # 依存
