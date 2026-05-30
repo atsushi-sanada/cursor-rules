@@ -53,7 +53,7 @@ cd cursor-rules
 
 ### Runner ラベル
 
-workflow は既定で `ubuntu-latest` です。社内 Runner のラベルが異なる場合は、`.github/workflows/mirror-to-github-com.yml` の `runs-on` を変更してください。
+workflow は `doge` 組織の self-hosted Runner（ラベル: `self-hosted`, `Linux`, `X64`）で実行します。ラベルが変わった場合は `.github/workflows/mirror-to-github-com.yml` の `runs-on` を合わせてください。
 
 ## その他
 
