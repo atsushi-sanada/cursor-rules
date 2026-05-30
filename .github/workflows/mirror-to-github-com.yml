@@ -9,16 +9,17 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: mirror-to-github-com
   cancel-in-progress: false
 
 jobs:
   mirror:
-    # Match org runner labels (self-hosted, Linux, X64). Use self-hosted alone if jobs stay pending.
-    runs-on: self-hosted
-    permissions:
-      contents: read
+    runs-on: [self-hosted, linux]
+    timeout-minutes: 10
     steps:
       - name: Checkout full history
         uses: actions/checkout@v4
@@ -26,9 +27,9 @@ jobs:
           fetch-depth: 0
 
       - name: Mirror branches and tags to GitHub.com
+        shell: bash
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TO_GITHUB_COM_TOKEN }}
-          MIRROR_URL: https://github.com/atsushi-sanada/cursor-rules.git
         run: |
           set -euo pipefail
 

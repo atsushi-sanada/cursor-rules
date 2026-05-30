@@ -53,7 +53,7 @@ cd cursor-rules
 
 ### Runner ラベル
 
-workflow は `doge` 組織の self-hosted Runner（ラベル: `self-hosted`, `Linux`, `X64`）で実行します。ラベルが変わった場合は `.github/workflows/mirror-to-github-com.yml` の `runs-on` を合わせてください。
+workflow は `doge` 組織の self-hosted Runner で、`runs-on: [self-hosted, linux]` を指定します（`redmine-work` など社内の他プロジェクトと同じ指定）。Runner 画面に `Linux` / `X64` と表示されていても、workflow 側は **小文字の `linux`** を使います。
 
 ## その他
 
