@@ -4,7 +4,7 @@ globs: "**/*.bat"
 alwaysApply: false
 ---
 
-# BAT File Rules
+# 03-code-lang-bat-rules.mdc - BAT File Rules
 
 ## File Format
 

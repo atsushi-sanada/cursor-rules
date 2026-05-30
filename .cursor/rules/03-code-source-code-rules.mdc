@@ -4,7 +4,7 @@ globs: "**/*.{cs,js,ts,tsx,py,java,go,rs,swift}"
 alwaysApply: false
 ---
 
-# Source Code Creation Rules
+# 03-code-source-code-rules.mdc - Source Code Creation Rules
 
 ## Coding Policy
 

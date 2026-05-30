@@ -4,7 +4,7 @@ globs: "**/*.py"
 alwaysApply: false
 ---
 
-# Python Coding Rules
+# 03-code-lang-python-code-rules.mdc - Python Coding Rules
 
 ## Coding Policy
 

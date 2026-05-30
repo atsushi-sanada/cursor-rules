@@ -4,7 +4,7 @@ globs: "**/*.cs"
 alwaysApply: false
 ---
 
-# Unity C# Coding Rules
+# 03-code-lang-unity-csharp-code-rules.mdc - Unity C# Coding Rules
 
 ## Coding Policy
 

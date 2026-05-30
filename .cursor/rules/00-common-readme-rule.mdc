@@ -4,7 +4,7 @@ globs: "**/README.md"
 alwaysApply: false
 ---
 
-# README Authoring Rules
+# 00-common-readme-rule.mdc - README Authoring Rules
 
 ## Role
 

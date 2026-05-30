@@ -4,7 +4,7 @@ globs: "**/*.md"
 alwaysApply: false
 ---
 
-# Markdown Formatting Rules
+# 00-common-markdown-rule.mdc - Markdown Formatting Rules
 
 ## Purpose
 

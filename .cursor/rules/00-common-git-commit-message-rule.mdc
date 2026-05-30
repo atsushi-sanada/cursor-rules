@@ -3,7 +3,7 @@ description: Japanese Git commit message rules for generated commit messages
 alwaysApply: false
 ---
 
-# Git Commit Message Rules
+# 00-common-git-commit-message-rule.mdc - Git Commit Message Rules
 
 ## Scope
 

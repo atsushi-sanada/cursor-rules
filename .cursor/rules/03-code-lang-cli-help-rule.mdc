@@ -3,7 +3,7 @@ description: CLI help message rules for command-line tools and scripts
 alwaysApply: false
 ---
 
-# CLI Help Message Rules
+# 03-code-lang-cli-help-rule.mdc - CLI Help Message Rules
 
 ## Scope
 

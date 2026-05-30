@@ -4,7 +4,7 @@ globs: "**/*.{js,mjs,cjs,jsx}"
 alwaysApply: false
 ---
 
-# JavaScript Coding Rules
+# 03-code-lang-javascript-code-rules.mdc - JavaScript Coding Rules
 
 ## Coding Policy
 
