@@ -1,0 +1,46 @@
+# Sync this repository (GHE canonical) to GitHub.com for Cursor Remote Rules.
+# Requires repository secret: GITHUB_COM_MIRROR_TOKEN
+
+name: Mirror to GitHub.com
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: mirror-to-github-com
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror branches and tags to GitHub.com
+        env:
+          MIRROR_TOKEN: ${{ secrets.GITHUB_COM_MIRROR_TOKEN }}
+          MIRROR_URL: https://github.com/atsushi-sanada/cursor-rules.git
+        run: |
+          set -euo pipefail
+
+          if [ -z "${MIRROR_TOKEN}" ]; then
+            echo "::error::Secret GITHUB_COM_MIRROR_TOKEN is not set on this repository."
+            exit 1
+          fi
+
+          git remote remove mirror 2>/dev/null || true
+          git remote add mirror "https://x-access-token:${MIRROR_TOKEN}@github.com/atsushi-sanada/cursor-rules.git"
+
+          git push --prune mirror \
+            "+refs/heads/*:refs/heads/*" \
+            "+refs/tags/*:refs/tags/*"
+
+          git remote remove mirror

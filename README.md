@@ -33,6 +33,28 @@ cd cursor-rules
 4. 新しいルールを追加するときは、まず日本語の `.md` を作り、次に英語の `.mdc` を作ります。
 5. Skill の内容を直すときは `.cursor/skills/translate-ai-guidance-to-english/` を更新します。
 
+## GitHub.com への自動ミラー（GHE 正本）
+
+正本は `https://github.enish.jp/doge/cursor-rules.git` です。`main` へ push すると、GitHub Actions が `https://github.com/atsushi-sanada/cursor-rules.git` へブランチとタグを同期します。
+
+### 初回セットアップ（GHE 側）
+
+1. GitHub.com で Personal Access Token（classic）または fine-grained token を作成します。
+   - classic: `repo` スコープ
+   - fine-grained: 対象リポジトリ `atsushi-sanada/cursor-rules` に **Contents: Read and write**
+2. GHE の `doge/cursor-rules` → **Settings** → **Secrets and variables** → **Actions** に、名前 `GITHUB_COM_MIRROR_TOKEN` でトークンを登録します。
+3. このリポジトリの workflow を GHE の `main` に push します。
+4. **Actions** タブで `Mirror to GitHub.com` が成功することを確認します。手動実行は **Run workflow**（`workflow_dispatch`）でも可能です。
+
+### 反映タイミング
+
+- GHE の `main` への push 直後に workflow が起動します。
+- 通常は Runner の待ち時間を含め **1〜5 分程度** で GitHub.com に反映されます（Runner の混雑状況により変動します）。
+
+### Runner ラベル
+
+workflow は既定で `ubuntu-latest` です。社内 Runner のラベルが異なる場合は、`.github/workflows/mirror-to-github-com.yml` の `runs-on` を変更してください。
+
 ## その他
 
 - `.md` は人間が読む原本、`.mdc` は Cursor Agent が実行する英語ルールです。
