@@ -36,7 +36,7 @@ globs: "**/*.cs"
 alwaysApply: false
 ---
 
-# Unity Async Rules
+# unity-async-rules.mdc - Unity Async Rules
 
 - MUST use UniTask for asynchronous operations.
 - NEVER use `Task.Delay`.
@@ -60,7 +60,7 @@ name: review-findings-first
 description: Reviews changes and reports issues before summaries. Use when the user asks for a review, code review, specification review, or quality check.
 ---
 
-# Review Findings First
+# review-findings-first.mdc - Review Findings First
 
 ## Instructions
 
@@ -140,7 +140,7 @@ globs: "**/*.md"
 alwaysApply: false
 ---
 
-# Markdown Heading Rules
+# markdown-format.mdc - Markdown Heading Rules
 
 - MUST use exactly one H1 heading per Markdown document.
 - SHOULD use H2 and lower headings in order without skipping levels.
@@ -155,7 +155,7 @@ globs: "**/*.cs"
 alwaysApply: false
 ---
 
-# Unity C# Field Rules
+# unity-csharp-fields.mdc - Unity C# Field Rules
 
 - MUST use `[SerializeField] private` for Inspector references.
 - NEVER use public fields only to expose values in the Inspector.
@@ -164,3 +164,16 @@ alwaysApply: false
 ### Human Confirmation Needed
 
 - Confirm whether the Unity rule should apply to all C# files or only `Assets/**/*.cs`.
+
+## Example 6: User Rule First-Line Visibility
+
+Use this format only for Cursor User Rules, AGENTS.md, or plain Markdown rule text.
+Do not use this structure for `.cursor/rules/*.mdc` Project Rules.
+
+```markdown
+# review-findings-first - Review Findings First
+
+- MUST start review responses with `問題あり`, `問題なし`, or `要確認`.
+- MUST list findings before summaries when issues exist.
+- SHOULD order findings by severity.
+```

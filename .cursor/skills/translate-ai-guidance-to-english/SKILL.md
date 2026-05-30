@@ -106,6 +106,15 @@ Then apply only the relevant optional review:
 - For `SKILL.md` files: check skill metadata, trigger clarity, workflow executability, and linked references.
 - For coding standards: check file scope, required behavior, prohibited behavior, and examples.
 
+## Cursor Rule Display Policy
+
+Cursor has different rule formats. Do not treat them as interchangeable.
+
+- For Cursor User Rules or other plain Markdown rule text, put a readable rule identifier on the first line, preferably the proposed filename or rule name.
+- For Cursor Project Rules in `.cursor/rules/*.mdc`, keep YAML frontmatter at the top of the file. Do not put the filename before the opening `---`.
+- For `.mdc` output, put the filename in the surrounding output heading and use the first Markdown heading after frontmatter to identify the rule.
+- If the user explicitly needs a rule list where the first line is visible, output a User Rule / plain Markdown variant instead of a `.mdc` Project Rule.
+
 ## Cursor Rule Conversion
 
 When converting Japanese guidance into Cursor `.mdc` rules:
@@ -130,7 +139,17 @@ globs: "[file pattern, if scoped]"
 alwaysApply: false
 ---
 
-# [Rule Title]
+# [name].mdc - [Rule Title]
+
+- MUST ...
+- SHOULD ...
+- NEVER ...
+```
+
+Recommended User Rule / plain Markdown structure:
+
+```markdown
+# [name] - [Rule Title]
 
 - MUST ...
 - SHOULD ...
@@ -157,7 +176,7 @@ globs: "[pattern]"
 alwaysApply: false
 ---
 
-# [Title]
+# [name].mdc - [Title]
 
 - MUST ...
 \```

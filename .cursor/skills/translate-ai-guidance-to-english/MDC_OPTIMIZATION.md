@@ -14,6 +14,16 @@ Good `.mdc` rules are:
 - Short enough to stay useful in context.
 - Easy to discover from filename and description.
 
+## Format Boundary
+
+Cursor User Rules and Cursor Project Rules are different formats.
+
+- User Rules are plain text in Cursor Settings. If a list shows only the first line, put a readable rule identifier on the first line.
+- Project Rules live in `.cursor/rules/*.mdc`. They require `.mdc` frontmatter metadata at the top of the file. Do not put a filename line before the opening `---`.
+- AGENTS.md is plain Markdown and can use a first-line title.
+
+If the user asks for both first-line visibility and `.mdc` behavior, explain that these requirements conflict. Provide a plain User Rule variant for first-line visibility and a `.mdc` Project Rule variant for scoped Cursor rule behavior.
+
 ## Decision Flow
 
 ### 1. Decide Whether It Should Be a Rule
@@ -143,6 +153,18 @@ Use direct instructions:
 
 Keep examples short.
 
+For `.mdc` files, use the first Markdown heading after frontmatter to identify the rule:
+
+```markdown
+# unity-csharp-fields.mdc - Unity C# Field Rules
+```
+
+For User Rules or other plain Markdown rules, put the identifier on the first line:
+
+```markdown
+# unity-csharp-fields - Unity C# Field Rules
+```
+
 Prefer:
 
 ```markdown
@@ -178,7 +200,7 @@ globs: "**/*.ts"
 alwaysApply: false
 ---
 
-# TypeScript Coding Rules
+# example-rule.mdc - TypeScript Coding Rules
 
 - MUST ...
 - SHOULD ...

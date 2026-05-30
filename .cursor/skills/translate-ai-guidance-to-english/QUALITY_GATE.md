@@ -64,6 +64,9 @@ Review every conversion as English AI guidance first.
 ### Cursor Rule
 
 - The `.mdc` frontmatter is valid.
+- `.mdc` Project Rules keep frontmatter at the top of the file.
+- `.mdc` Project Rules do not add a filename or title line before the opening `---`.
+- User Rules or other plain Markdown rules use a readable rule identifier on the first line.
 - `alwaysApply` is used only for universal guidance.
 - `globs` are used for file-specific rules.
 - `globs` values are quoted, for example `"**/*.cs"`.
