@@ -60,7 +60,10 @@ cd cursor-rules
 2. `00_common/markdown_rule.md`（Markdown記法の統一）
 3. `03_code/folder_structure_rules.md`（フォルダ構成の考え方）
 4. `03_code/source_code_rules.md`（ソースコード全般の共通ルール）
-5. `03_code/lang/`（言語別ルール）
+5. `01_ai-governance/ai_response_governance.md`（AI応答の共通ルール）
+6. `01_ai-governance/answer_type_first.md`（最初の一文を回答型に合わせるルール）
+7. `01_ai-governance/review_explanation_clarity.md`（レビュー説明を判断しやすくするルール）
+8. `03_code/lang/`（言語別ルール）
 
 ### 導入のやり方
 
