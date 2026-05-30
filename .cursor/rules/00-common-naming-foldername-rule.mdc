@@ -1,0 +1,83 @@
+---
+description: Folder naming rules for project directories and asset organization
+alwaysApply: false
+---
+
+# Folder Naming Rules
+
+## Purpose
+
+- MUST name folders so their contents are clear from the directory tree.
+- MUST make sorting and classification rules clear.
+- MUST make it easy for team members to choose and find the correct folder.
+
+## Core Rule
+
+- MUST use the same idea as file naming: lowercase, separators, and immediately understandable meaning.
+- MUST use lowercase English alphanumeric words separated by underscores for general folder names.
+- MUST use one naming convention per project.
+- NEVER mix naming conventions casually.
+
+## Term Definitions
+
+- MUST treat a folder name as the directory name.
+- MUST treat a path as the route through folders, such as `assets_images/ui_icons/`.
+
+## Basic Rules
+
+- MUST use only half-width lowercase letters and numbers for general folder names.
+- MUST use `_` as the word separator.
+- MUST NOT use spaces.
+- MUST NOT use Japanese characters.
+- MUST NOT use special symbols.
+- MUST use prefixes by category or purpose when they improve classification.
+- SHOULD keep nesting to about 2 or 3 levels.
+- SHOULD avoid deep nesting beyond the responsibility unit.
+
+## Naming Patterns
+
+- SHOULD name folders with `[category]_[content]`.
+- SHOULD name folders with `[purpose]_[target]` when purpose is clearer than category.
+- SHOULD use plural forms consistently for folders that contain collections.
+- SHOULD use examples such as `assets_images` and `assets_icons` for collection folders.
+- SHOULD NOT put dates or versions in active folder names; use Git history or file names for history.
+
+## Common Folder Names
+
+- SHOULD use `design_psd` for original design files such as Photoshop files.
+- SHOULD use `design_export` for exported or delivery-ready design assets.
+- SHOULD use `spec_docs` for specifications such as PDFs or Markdown.
+- SHOULD use `scripts_deploy` for deployment and build helper scripts.
+- SHOULD use `docs_meeting` for meeting notes and meeting materials.
+- SHOULD use `assets_images` for image assets such as JPG and PNG.
+- SHOULD use `assets_icons` for icon assets such as SVG and PNG.
+- SHOULD use `dev_html` for HTML files under development.
+- SHOULD use `archive_yyyy_qn` or similar for archive folders when time-based organization is required.
+
+## Prohibited Names
+
+- NEVER use vague names such as `新しいフォルダ`, `aaa`, or uncontrolled `temp`.
+- NEVER use Japanese-only generic names such as `デザイン` or `資料`.
+- NEVER use scalable-by-number names such as `img_folder_1`.
+- NEVER mix separators or add versions inside names such as `ui-assets_v3`.
+- NEVER use spaces such as `asset icon`.
+- NEVER use uppercase mixed names such as `UIAssets`.
+
+## Supplemental Rules
+
+- MAY use `archive_yyyy_mm` or `release_yyyy_qn` for time-series folders.
+- SHOULD use the `common_` prefix for shared resources, such as `common_components` or `common_assets`.
+- SHOULD place temporary files in an explicit `temp/` folder and define a regular cleanup rule.
+
+## Exceptions and Operations
+
+- MUST create new folders with lowercase English words separated by underscores by default.
+- MAY allow exceptions only when a tool or platform requires a specific name.
+- MUST document exception folders and the reason for each exception.
+- MUST keep exceptions minimal.
+- SHOULD communicate exceptions to the whole team.
+- MAY use exception examples such as Unity `Assets/`, `ProjectSettings/`, `Packages/`, Xcode `Sources/`, `Project.xcodeproj`, and language-required files such as `go.mod` or `Cargo.toml`.
+- MUST obtain code owner or repository maintainer approval before adding new exceptions.
+- MUST use a safe `git mv` flow for case-only renames on Windows-sensitive repositories.
+- SHOULD rename uppercase to lowercase through an intermediate name, such as `git mv Assets temp_assets && git mv temp_assets assets`.
+- SHOULD describe the impact of folder renames in PRs and verify references in CI.

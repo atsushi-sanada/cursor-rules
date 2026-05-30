@@ -1,0 +1,89 @@
+---
+description: JavaScript coding rules for formatting, modules, async code, security, and tests
+globs: "**/*.{js,mjs,cjs,jsx}"
+alwaysApply: false
+---
+
+# JavaScript Coding Rules
+
+## Coding Policy
+
+- MUST optimize JavaScript for readability, maintainability, and consistency.
+
+## Formatting
+
+- MUST use 2-space indentation.
+- MUST keep lines around 80 to 100 characters.
+- SHOULD use single quotes unless template literals or escaping make another style clearer.
+- MUST use semicolons.
+- MUST use LF line endings and end files with a newline.
+- MUST insert a final newline at the end of each file.
+- SHOULD format with `prettier --write` when available.
+- SHOULD lint with `eslint --fix` using `eslint:recommended` or Airbnb-style rules when configured.
+
+## Naming
+
+- MUST use `camelCase` for variables and functions.
+- MUST use `PascalCase` for classes and constructor functions.
+- MUST use `UPPER_SNAKE_CASE` for values that are constants.
+- MUST use `kebab-case.js` file names.
+- MUST use lowercase hyphenated directory names.
+
+## Modules
+
+- MUST use ES6+ modules for imports and exports.
+- SHOULD write module code like `import { fetchData } from './api-service.js';` and `export function init() {}`.
+- SHOULD keep one module or class per file.
+- MUST avoid circular dependencies.
+
+## Declarations and Async
+
+- MUST use `const` or `let`; NEVER use `var`.
+- MUST use `const` for values that are not reassigned.
+- MUST use `async`/`await` or Promise chains for asynchronous processing.
+- MUST explicitly catch errors with `try`/`catch` when the operation can fail and the caller cannot handle it directly.
+- MUST rethrow errors after logging when the caller still needs to know the operation failed.
+
+## Documentation
+
+- MUST write JSDoc comments for functions and classes.
+- MUST include `@param` and `@returns` in JSDoc when applicable.
+- SHOULD add comments only for complex logic or non-obvious intent.
+
+## Error Handling and Logs
+
+- MUST choose `console.log`, `console.warn`, or `console.error` according to severity.
+- MUST restrict non-essential debug logs to development with `process.env.NODE_ENV === 'development'`.
+
+## Performance and Best Practices
+
+- MUST avoid unnecessary global variables.
+- SHOULD use `map`, `filter`, and `reduce` where they improve readability.
+- SHOULD move heavy processing to a Web Worker or asynchronous flow when it can block the UI.
+- MAY use memoization or caching when it improves performance without hiding correctness issues.
+
+## Security
+
+- NEVER use `eval`.
+- MUST sanitize user input.
+- SHOULD configure Content Security Policy for frontend code when applicable.
+- MUST use HTTPS for HTTP requests.
+
+## Testing and CI
+
+- SHOULD use Jest or Mocha plus Chai for tests.
+- SHOULD place tests in `__tests__/` or `*.test.js`.
+- SHOULD aim for at least 80% coverage when the project tracks coverage.
+- SHOULD use mocks and stubs where they make tests stable and focused.
+- SHOULD run ESLint, Prettier, Jest, and CI checks when the project provides them.
+
+## Quality Checklist
+
+- MUST verify there are no ESLint errors when ESLint is configured.
+- MUST verify code is formatted with Prettier when Prettier is configured.
+- MUST verify JSDoc is appropriate for functions and classes.
+- MUST verify declarations use `const` and `let` correctly.
+- MUST verify module dependencies are appropriate and non-circular.
+- MUST verify `await` is used correctly in asynchronous code.
+- MUST verify there are no security risks such as `eval`.
+- SHOULD verify test coverage is sufficient when coverage is tracked.

@@ -1,0 +1,35 @@
+---
+description: Windows BAT file rules for encoding, pause behavior, and comments
+globs: "**/*.bat"
+alwaysApply: false
+---
+
+# BAT File Rules
+
+## File Format
+
+- MUST create BAT files as UTF-8.
+- MUST use CRLF line endings for BAT files.
+- MUST start every BAT file with:
+
+```batch
+@echo off
+chcp 65001 >nul
+```
+
+## Pause Command
+
+- MUST make `pause` conditional so scripts do not stop when called from another BAT file.
+- MUST use this exact conditional pause pattern when pause is needed:
+
+```batch
+echo %CMDCMDLINE% | find /i "%~nx0" >nul && pause
+```
+
+## Comments
+
+- NEVER use `REM` comments because they are prone to mojibake in this workflow.
+- MUST use `echo` for visible process descriptions.
+- MUST use `::` for supplemental comments needed for readability.
+- SHOULD use `echo` when describing an operation that appears in command output.
+- SHOULD use `::` only when supplemental explanation is needed for readability.

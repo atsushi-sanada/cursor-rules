@@ -1,0 +1,100 @@
+---
+description: Project folder structure rules for common language and framework layouts
+alwaysApply: false
+---
+
+# Project Folder Structure Rules
+
+## Common Policy
+
+- MUST choose a folder structure optimized for the project type.
+- MUST separate responsibilities by feature or layer.
+- MUST separate environment-specific configuration through `dev/`, `prod/`, or centralized `config/`.
+- MUST keep at least `README.md` and `.gitignore` at the project root unless the platform requires otherwise.
+- MUST keep `tests/`, `docs/`, and `scripts/` as independent folders when the project has tests, documentation, or scripts.
+- MUST limit nesting to 2 responsibility levels by default, such as `src/features/` or `app/services/`.
+- MAY exceed 2 responsibility levels only when the framework requires it, such as Java package paths or generated project files.
+- SHOULD copy and adapt the matching language template when introducing a new project structure.
+
+## JavaScript and TypeScript
+
+- SHOULD use this structure for Node.js or React projects when applicable:
+
+```text
+project/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── services/
+│   ├── utils/
+│   └── types/
+├── tests/
+├── scripts/
+├── .env
+└── README.md
+```
+
+- SHOULD use `public/` for static assets when the project serves web assets.
+- SHOULD keep application source under `src/`.
+- SHOULD use `components/`, `pages/`, `hooks/`, `services/`, `utils/`, and `types/` inside `src/` when those responsibilities exist.
+- SHOULD keep tests under `tests/` and build or CI helpers under `scripts/`.
+
+## Python
+
+- SHOULD use this structure for Web, API, or data-processing projects when applicable:
+
+```text
+project/
+├── app/
+│   ├── api/
+│   ├── models/
+│   ├── services/
+│   ├── core/
+│   └── utils/
+├── tests/
+├── scripts/
+├── requirements.txt
+└── README.md
+```
+
+- SHOULD use `app/` for Web, API, or data-processing application code.
+- SHOULD use `app/api`, `app/models`, `app/services`, `app/core`, and `app/utils` when those responsibilities exist.
+- SHOULD keep pytest or equivalent tests under `tests/`.
+- SHOULD keep batch jobs and utility scripts under `scripts/`.
+
+## C Sharp
+
+- SHOULD use the Unity structure with `Assets/`, `Assets/Scripts`, `Assets/Art`, `Assets/Prefabs`, `ProjectSettings/`, and `README.md`.
+- MUST follow Unity-required folders such as `Assets/` and `ProjectSettings/` for Unity projects.
+- SHOULD place Unity scripts, art or audio assets, and prefabs under `Assets/Scripts`, `Assets/Art`, and `Assets/Prefabs` when applicable.
+- SHOULD use this non-Unity .NET structure when applicable:
+
+```text
+project/
+├── src/
+│   └── AppName/
+│       ├── Controllers/
+│       ├── Models/
+│       ├── Services/
+│       └── Program.cs
+├── tests/
+├── scripts/
+└── README.md
+```
+
+- SHOULD use `src/<AppName>/Controllers`, `Models`, `Services`, and `Program.cs` for non-Unity .NET projects when applicable.
+
+## Other Language Layouts
+
+- SHOULD use `src/main/java`, `src/main/resources`, `src/test`, and `build.gradle` or `pom.xml` for Java projects when applicable.
+- SHOULD use `cmd/`, `internal/`, `pkg/`, `api/`, `scripts/`, and `go.mod` for Go projects when applicable.
+- SHOULD use `src/main.rs`, `src/lib.rs`, `src/modules`, `tests/`, and `Cargo.toml` for Rust projects when applicable.
+- SHOULD use `Project.xcodeproj`, `Sources/`, `Resources/`, and `Tests/` for Swift iOS projects when applicable.
+
+## Shared and Operations
+
+- MAY use `shared/` for common resources across languages.
+- SHOULD centralize CI/CD settings and environment files under `config/`.
+- SHOULD copy and adjust these templates instead of inventing an unrelated structure for new projects.

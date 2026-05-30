@@ -1,0 +1,82 @@
+---
+description: Python coding rules for formatting, naming, docstrings, typing, errors, tests, and tooling
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python Coding Rules
+
+## Coding Policy
+
+- MUST optimize Python for readability, maintainability, and consistency.
+
+## Formatting
+
+- MUST use 4-space indentation.
+- SHOULD keep lines within 79 characters.
+- MAY allow 80 to 100 characters when readability is better.
+- MUST use LF line endings and end files with a newline.
+- MUST place two blank lines before top-level functions and classes.
+- SHOULD separate logical sections inside methods with one blank line.
+- SHOULD format with `black` when available.
+- MUST order imports as standard library, third-party, then local imports.
+- MUST separate import groups with blank lines.
+- SHOULD sort imports with `isort` when available.
+
+## Naming
+
+- MUST use `snake_case` for variables and functions.
+- MUST use `PascalCase` for classes.
+- MUST use `UPPER_SNAKE_CASE` for constants.
+- MUST use `snake_case.py` for module file names.
+- MUST use lowercase package directory names.
+
+## Documentation
+
+- MUST write module, class, and function docstrings.
+- MUST use one project-wide docstring style, preferably Google style or NumPy style.
+- SHOULD write docstrings with `Args` and `Returns` when following Google style.
+- SHOULD explain comments only for complex logic or non-obvious intent.
+- SHOULD add comments only for complex logic or non-obvious intent.
+
+## Type Hints
+
+- SHOULD add PEP 484 type hints to functions and methods.
+- SHOULD use `mypy` for static type checks when available.
+
+## Error Handling and Logging
+
+- MUST catch concrete exception classes.
+- NEVER use bare `except:`.
+- MUST use the standard `logging` module for logs.
+- MUST choose logging levels such as `info`, `warning`, and `error` according to severity.
+
+## Testing
+
+- SHOULD use `pytest` for tests.
+- MUST place pytest tests in `tests/` when creating test files.
+- MUST name test files `test_*.py`.
+- MUST name test functions `test_*`.
+- SHOULD aim for at least 80% coverage when the project tracks coverage.
+
+## Dependency Management
+
+- SHOULD use a virtual environment tool such as `venv`, pipenv, or Poetry.
+- MUST manage dependencies through `requirements.txt`, `poetry.lock`, or another explicit dependency file.
+- SHOULD pin versions with `package==version` when reproducibility matters.
+
+## CI and Tools
+
+- SHOULD run `flake8`, `black`, `isort`, and `mypy` when those tools are configured.
+
+## Quality Checklist
+
+- MUST verify PEP8 or project lint compliance when `flake8` is configured.
+- MUST verify code is formatted with `black` when configured.
+- MUST verify import order is correct with `isort` when configured.
+- MUST verify type hints are appropriate.
+- MUST verify docstrings are present.
+- MUST verify exception handling is concrete and appropriate.
+- MUST verify logging levels are used correctly.
+- SHOULD verify test coverage is sufficient when coverage is tracked.
+- MUST verify dependencies are defined correctly.

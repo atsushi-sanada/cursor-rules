@@ -1,0 +1,88 @@
+---
+description: General source code creation rules for readable, maintainable, extensible code
+globs: "**/*.{cs,js,ts,tsx,py,java,go,rs,swift}"
+alwaysApply: false
+---
+
+# Source Code Creation Rules
+
+## Coding Policy
+
+- MUST write code that anyone can understand.
+- MUST keep design clear and avoid structures that block extension.
+- MUST keep behavior stable and reproducible.
+- MUST make code operationally consistent enough that another maintainer can take over.
+
+## Readability
+
+- MUST follow Microsoft-style naming when no language-specific rule overrides it: classes `PascalCase`, methods `PascalCase`, variables `camelCase`, constants `UPPER_SNAKE_CASE`, private fields `_camelCase`.
+- MUST add summary comments at the beginning of classes when the language supports documentation comments.
+- MUST add function comments with parameters and return values for public or reusable functions.
+- MUST add comments for public variables and constants.
+- SHOULD add short intent comments only for complex logic or non-obvious decisions.
+- NEVER add change-history comments; rely on Git history.
+
+## Structure
+
+- SHOULD keep each method around 20 to 30 lines.
+- MUST split long methods by responsibility.
+- MUST keep each class focused on a single responsibility.
+- MUST NOT hardcode configuration values.
+- MUST manage settings with constants, readonly values, config files, or ScriptableObject-style data where appropriate.
+
+## Extensibility
+
+- MUST replace magic numbers and magic strings with named constants or configuration.
+- SHOULD apply SOLID principles when they reduce coupling and improve extension.
+- SHOULD apply the Open/Closed Principle by designing code that is open to extension and closed to unnecessary modification.
+- SHOULD design extension points through interfaces or abstractions when multiple implementations are expected.
+- SHOULD use dependency injection where it makes dependencies explicit and testable.
+- SHOULD perform regular refactoring.
+- MUST remove duplicated code during regular refactoring.
+- MUST split long methods during refactoring.
+- SHOULD simplify complex conditional branches during refactoring.
+
+## Error Handling
+
+- MUST validate external input at trust boundaries, including files, databases, APIs, user input, async processing, entry points, and persistence.
+- MUST treat internal processing as validated after the trust boundary.
+- SHOULD avoid excessive defensive checks.
+- MUST use the type system instead of runtime checks when compile-time validation is enough.
+- SHOULD implement error handling for recoverable errors and important side effects.
+- SHOULD avoid runtime checks when the type system or caller contract already guarantees correctness.
+- MUST avoid duplicated validation; validate once at the boundary.
+- MUST consider validation cost in performance-critical paths.
+- NEVER implement fallback values, default substitutions, or alternative processing unless the user explicitly requests it.
+- NEVER add fallbacks merely to make an error disappear.
+- MUST use concrete exception classes where the language supports them.
+
+## Logging
+
+- MUST log only essential information.
+- MUST choose log levels according to severity: normal information, warning, or error.
+- MUST consider logging performance impact.
+
+## Unity Debug Notation
+
+- MUST write Unity logs with the full `UnityEngine.Debug` path.
+- NEVER write Unity logs as bare `Debug.Log`.
+
+## BAT File Supplemental Rules
+
+- MUST write BAT files as UTF-8 and start them with `@echo off` and `chcp 65001 >nul`.
+- MUST use `echo` for visible process messages in BAT files.
+- MUST use `::` for BAT comments and NEVER use `REM`.
+
+## Code Review Checklist
+
+- MUST verify that naming follows Microsoft-style rules or the language-specific override.
+- MUST verify that class summary comments exist when required.
+- MUST verify that functions, public variables, and constants have documentation comments when required.
+- MUST verify that methods are around 20 to 30 lines or split by responsibility.
+- MUST verify that each class follows single responsibility.
+- MUST verify that constants and settings are not hardcoded.
+- MUST verify that magic numbers and strings are not used.
+- MUST verify that SOLID principles are applied where useful.
+- MUST verify that error handling exists at trust boundaries.
+- MUST verify that logs use appropriate levels.
+- MUST verify that Unity debug calls use the full `UnityEngine.Debug` path.

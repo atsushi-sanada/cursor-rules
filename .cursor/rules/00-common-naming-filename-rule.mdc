@@ -1,0 +1,75 @@
+---
+description: File naming rules for human-readable project assets and documents
+alwaysApply: false
+---
+
+# File Naming Rules
+
+## Purpose
+
+- MUST name files so a reader can understand the content immediately.
+- MUST optimize names for searchability, ordering, and reuse.
+- MUST make version and date history easy to manage when those are needed.
+
+## Core Decision
+
+- MUST distinguish naming rules by where the name is used.
+- MUST use `PascalCase` for class names in code.
+- MUST use `camelCase` for function and variable names in code when the language standard does not say otherwise.
+- MUST use `UPPER_SNAKE_CASE` for constants.
+- MUST use lowercase English words separated by underscores, `snake_case`, for general file names.
+- MUST prefer this common file naming rule unless a language-specific or tool-specific rule overrides it.
+
+## Term Definitions
+
+- MUST treat `PascalCase` as names like `UserProfile`.
+- MUST treat `camelCase` as names like `userProfile`.
+- MUST treat `snake_case` as names like `user_profile`.
+- MUST treat `kebab-case` as names like `user-profile`.
+
+## Usage by Context
+
+- MUST use `PascalCase` for class names because types should stand out.
+- MUST use `camelCase` for functions and variables in languages where that is the standard.
+- MUST use `UPPER_SNAKE_CASE` for constants so constants are recognizable.
+- MUST use `snake_case` for general file names because it works well with operating systems, CLIs, and tools.
+- MUST use `kebab-case` for URLs where web conventions require it.
+- SHOULD use `snake_case` for database columns because it matches SQL conventions.
+
+## Basic File Naming Rules
+
+- MUST use English half-width alphanumeric text as the base.
+- MUST NOT use spaces in file names.
+- MUST use `_` as the word separator for general file names.
+- MUST include dates only when needed.
+- MUST place dates at the end of the file name.
+- MUST write dates as `YYYY-MM-DD`.
+- SHOULD use purpose, category, or version prefixes when they clarify the file.
+- MUST include file extensions.
+
+## Exceptions
+
+- MUST follow Unity or C# requirements when a file name must match the class name, such as `GameManager.cs`.
+- MUST follow Python module naming rules such as `snake_case.py`.
+- MUST follow any tool or language naming convention that is required for the code to work.
+
+## File Name Pattern
+
+- SHOULD use this pattern when category, version, or date are needed:
+
+```text
+[category]_[content]_[version]_[date].[extension]
+```
+
+## Common Category Prefixes
+
+- SHOULD use purpose or category prefixes, such as `design_`, `spec_`, `meeting_`, `screenshot_`, `banner_`, or `script_`.
+- SHOULD use examples like `design_top_kv_v2_2024-06-07.psd`, `meeting_login_flow_2024-06-07.md`, `spec_user_auth_v1_2024-05.pdf`, `screenshot_header_bug_2024-06-07.png`, or `banner_summer2024_kv.jpg`.
+
+## Prohibited Names
+
+- NEVER use Japanese names such as `新しい画像.png` for durable project files.
+- NEVER use vague names such as `final.psd`, `コピー.psd`, `aaa.png`, or `test.md` for durable project files.
+- NEVER use spaces, such as `player score.png`.
+- NEVER mix casing and separators, such as `user-Profile.png`.
+- NEVER use `user-profile.png` for general files when this project rule requires underscores.

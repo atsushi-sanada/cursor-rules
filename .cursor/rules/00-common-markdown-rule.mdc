@@ -1,0 +1,67 @@
+---
+description: Markdown formatting rules for headings, code blocks, and links
+globs: "**/*.md"
+alwaysApply: false
+---
+
+# Markdown Formatting Rules
+
+## Purpose
+
+- MUST follow these common Markdown rules when creating or editing Markdown documents in an editor or IDE.
+- MUST prioritize readability and consistency.
+
+## Heading Hierarchy
+
+- MUST use `#` only once, as the document title at the top of the file.
+- MUST use `##` for section headings.
+- MUST use `###` for subsections and `####` for smaller nested headings.
+- MUST keep heading levels in order without skipping levels, such as `##` to `###` to `####`.
+- NEVER jump from `##` directly to `####`.
+- MUST NOT use heading levels deeper than `####`.
+- SHOULD follow this structure:
+
+```markdown
+# Document Title
+
+## Section Heading
+
+Content...
+
+### Subsection Heading
+
+Content...
+
+#### Small Heading
+
+Content...
+```
+
+## Code Blocks
+
+- MUST use fenced code blocks for multi-line code.
+- MUST include a language identifier on fenced code blocks.
+- SHOULD use an accurate language identifier such as `javascript`, `python`, `csharp`, `bash`, `text`, or `markdown`.
+- MUST use inline code formatting for short code, commands, file paths, environment variables, identifiers, and literal values.
+- NEVER use four-space indentation to create code blocks.
+- MUST distinguish inline code and block code correctly.
+- SHOULD write examples like a fenced JavaScript block with `javascript` as the language identifier.
+
+## Links and Images
+
+- SHOULD use inline links, for example `[Link text](https://example.com "Optional title")`.
+- SHOULD use a title attribute when it improves accessibility.
+- MAY use reference-style links when that improves readability.
+- MUST make link text descriptive.
+- SHOULD avoid direct raw URL display at the start of lines because it reduces readability.
+- MUST keep direct URL paste to the minimum necessary.
+- MUST write images with Markdown image syntax and meaningful alt text when images are used.
+- SHOULD write image links with the same clarity as normal links, for example `![Alt text](image-url "Optional title")`.
+
+## Quality Checklist
+
+- MUST verify that H1 to H4 heading order is not skipped.
+- MUST verify that code blocks are fenced and have language identifiers.
+- MUST verify that inline code and block code are used in the correct places.
+- MUST verify that link text is descriptive and URLs are correct.
+- MUST verify that direct URL display is minimized.

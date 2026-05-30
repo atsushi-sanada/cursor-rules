@@ -1,0 +1,132 @@
+---
+description: Feature-level folder, file, and class responsibility rules for code structure decisions
+alwaysApply: false
+---
+
+# Feature Folder, File, and Class Responsibility Rules
+
+## Scope
+
+- MUST treat one feature as the smallest reusable responsibility unit.
+- MUST keep all files for one feature under one feature folder unless the framework requires a different location.
+- MUST treat the Unity examples as reference structures that also apply to non-Unity projects after adapting names, extensions, and platform concepts.
+- MUST organize folders, files, and classes around SOLID principles, especially single responsibility, interface segregation, and dependency inversion.
+- MUST write code that anyone can understand.
+- MUST keep design clear and avoid structures that block extension.
+- MUST keep behavior stable and reproducible.
+- MUST keep operation consistent enough for handoff.
+
+## SOLID Principles
+
+- MUST follow Single Responsibility Principle: one class has one responsibility.
+- MUST follow Open/Closed Principle: code is open for extension and closed for unnecessary modification.
+- MUST follow Liskov Substitution Principle: derived classes remain compatible with their base class.
+- MUST follow Interface Segregation Principle: avoid large interfaces that force unused methods.
+- MUST follow Dependency Inversion Principle: depend on abstractions rather than concrete implementations.
+
+## Custom Structural Principles
+
+- MUST use one folder per feature to close responsibility within the feature.
+- MUST align folder responsibility with class responsibility.
+- MUST centralize feature entry and dependency control through a single manager.
+- MUST separate responsibilities such as display, presentation effects, logic, and data.
+- MUST separate display, presentation effects, business or game logic, and data responsibilities.
+- MUST keep dependency direction one-way.
+- MUST depend on abstractions rather than concrete implementations when decoupling is required.
+- SHOULD isolate cross-feature common behavior into an independent common layer.
+
+## Standard Feature Classes
+
+- MUST keep one feature entry point, usually `FeatureManager`.
+- MUST use `FeatureManager` for initialization, dependency resolution, and update-loop management.
+- MUST NOT create multiple independent managers for one feature.
+- MUST introduce one higher-level coordinator if multiple managers are unavoidable.
+- MUST use `FeatureController` for input interpretation, service coordination, and view state control.
+- MUST use `FeatureView` for UI or display control.
+- MUST use `FeatureService` for game logic or business logic.
+- MUST use `FeatureData` for settings, value objects, and data structures.
+- SHOULD use this baseline structure for one feature:
+
+```text
+FeatureName/
+├─ FeatureManager.cs
+├─ FeatureController.cs
+├─ FeatureView.cs
+├─ FeatureService.cs
+└─ FeatureData.cs
+```
+
+## Game Feature Structure
+
+- SHOULD split game features into UI and scene control when the feature controls both UI and visual scene elements.
+- SHOULD treat the non-UI scene element as the visual or presentation part added to UI control.
+- SHOULD use `FeatureUIController`, `FeatureUIView`, `FeatureUIService`, and `FeatureUIData` for UI concerns.
+- SHOULD use `FeatureSceneController`, `FeatureSceneView`, `FeatureSceneService`, and `FeatureSceneData` for scene concerns.
+- MAY add `FeatureCameraController`, `FeatureCharacterController`, or `FeatureBackgroundController` only for scene elements owned by the feature.
+- MAY add `FeatureEffectController` or `FeatureSoundController` only when the feature owns unique effect or sound behavior.
+- SHOULD avoid feature-specific effect or sound controllers when common game systems already own those concerns.
+- SHOULD use this basic game feature structure:
+
+```text
+FeatureName/
+├─ FeatureManager.cs
+├─ FeatureUIController.cs
+│  ├─ FeatureUIView.cs
+│  ├─ FeatureUIService.cs
+│  └─ FeatureUIData.cs
+└─ FeatureSceneController.cs
+   ├─ FeatureSceneView.cs
+   ├─ FeatureSceneService.cs
+   └─ FeatureSceneData.cs
+```
+
+- SHOULD use this expanded scene structure when a game feature maps to one scene or screen:
+
+```text
+FeatureName/
+├─ FeatureManager.cs
+│  ├─ FeatureUIController.cs
+│  │  ├─ FeatureUIView.cs
+│  │  ├─ FeatureUIService.cs
+│  │  └─ FeatureUIData.cs
+│  ├─ FeatureSceneController.cs
+│  │  ├─ FeatureSceneView.cs
+│  │  ├─ FeatureSceneService.cs
+│  │  ├─ FeatureSceneData.cs
+│  │  ├─ FeatureCameraController.cs
+│  │  ├─ FeatureCharacterController.cs
+│  │  ├─ FeatureBackgroundController.cs
+│  │  ├─ FeatureEffectController.cs
+│  │  └─ FeatureSoundController.cs
+│  └─ FeatureService.cs / FeatureData.cs
+```
+
+- MUST keep only one manager as the feature entry point.
+- MUST add a higher-level coordinator when multiple manager-like classes are unavoidable.
+- MAY replace character, background, camera, effect, and sound controllers with equivalents for the actual controlled object, such as cards or Live2D.
+- SHOULD omit effect and sound controllers when common systems own effects or sound.
+
+## Recommended Layout
+
+```text
+FeatureName/
+├─ FeatureManager.cs
+├─ FeatureService.cs
+├─ FeatureData.cs
+└─ FeatureController/
+   ├─ FeatureUI/
+   │  ├─ FeatureUIController.cs
+   │  ├─ FeatureUIView.cs
+   │  ├─ FeatureUIService.cs
+   │  └─ FeatureUIData.cs
+   └─ FeatureScene/
+      ├─ FeatureSceneController.cs
+      ├─ FeatureSceneView.cs
+      ├─ FeatureSceneService.cs
+      ├─ FeatureSceneData.cs
+      ├─ FeatureCameraController.cs
+      ├─ FeatureCharacterController.cs
+      ├─ FeatureBackgroundController.cs
+      ├─ FeatureEffectController.cs
+      └─ FeatureSoundController.cs
+```

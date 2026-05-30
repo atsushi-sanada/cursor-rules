@@ -1,0 +1,77 @@
+---
+description: Unity C# coding rules for MonoBehaviour design, data, performance, UI, and logging
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# Unity C# Coding Rules
+
+## Coding Policy
+
+- MUST write Unity C# that is readable, maintainable, performant, and extensible.
+- MUST design with single responsibility and loose coupling in mind.
+- MUST consider runtime performance during implementation.
+
+## Naming
+
+- MUST use `PascalCase` for classes, structs, and enums.
+- MUST use `PascalCase` for methods and properties.
+- SHOULD expose Inspector values with `[SerializeField] private` instead of public fields.
+- MUST use `_camelCase` for private fields.
+- MUST use `PascalCase` or `UPPER_SNAKE_CASE` consistently for constants according to project style.
+- MUST use `PascalCase` for namespaces.
+- MUST make each C# file name exactly match its main class name.
+
+## Folder Structure
+
+- MUST place Unity scripts under feature-oriented folders such as `Assets/Scripts/Player`, `Assets/Scripts/UI`, or `Assets/Scripts/Managers` when applicable.
+- MUST place scenes under `Assets/Scenes`.
+- MUST place prefabs under `Assets/Prefabs`.
+- SHOULD place dynamically loaded assets under Addressables or a controlled Resources folder.
+
+## MonoBehaviour Design
+
+- MUST order MonoBehaviour members as serialized fields, public properties, private fields, then lifecycle methods.
+- MUST order lifecycle methods as `Awake`, `OnEnable`, `Start`, `Update`, `FixedUpdate`, `LateUpdate`, `OnDisable`, `OnDestroy`.
+- MUST remove empty Unity lifecycle callbacks.
+- MUST cache `GetComponent` results in `Awake` or `Start`.
+- SHOULD use `RequireComponent` when the component requires another component.
+- SHOULD use `DisallowMultipleComponent` when duplicate components would be invalid.
+
+## Data Management
+
+- MUST use ScriptableObject for configurable data when Inspector-editable settings are needed.
+- MUST NOT hardcode settings that should be tuned through constants, readonly fields, ScriptableObjects, or config files.
+- SHOULD prefer Addressables over broad `Resources.Load` usage.
+
+## Performance
+
+- MUST avoid avoidable GC allocations, especially per-frame array or `List` creation.
+- SHOULD be careful with `foreach` in allocation-sensitive paths; prefer `for` or cached collections when needed.
+- MUST keep `Update` lightweight.
+- SHOULD move heavy work to coroutines, events, or scheduled flows.
+- MUST run physics operations in `FixedUpdate`.
+- SHOULD use Profiler or `ProfilerMarker` to identify bottlenecks.
+
+## UI Development
+
+- MUST separate UI View and Controller responsibilities.
+- MUST reference UI elements through serialized fields.
+- SHOULD use UnityEvent or delegates for UI event handlers.
+
+## Error Handling and Logs
+
+- MUST wrap development-only logs in `#if UNITY_EDITOR` when they should not ship.
+- MUST call logs through `UnityEngine.Debug.Log`, `UnityEngine.Debug.LogWarning`, or `UnityEngine.Debug.LogError`.
+- MUST choose log level according to severity.
+
+## Quality Checklist
+
+- MUST verify that namespaces are set appropriately.
+- MUST verify that private fields with `[SerializeField]` are used correctly.
+- MUST verify that unused lifecycle methods are removed.
+- MUST verify that configurable data is managed with ScriptableObject when appropriate.
+- MUST verify avoidable GC allocations with the profiler when performance matters.
+- MUST verify attributes such as `RequireComponent` are used when necessary.
+- MUST verify asset loading uses Addressables or controlled Resources usage appropriately.
+- MUST verify production builds do not include unnecessary debug logs.

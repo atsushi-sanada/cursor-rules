@@ -1,0 +1,46 @@
+---
+description: Japanese Git commit message rules for generated commit messages
+alwaysApply: false
+---
+
+# Git Commit Message Rules
+
+## Scope
+
+- MUST apply this rule when automatically generating Git commit messages.
+
+## Language and Style
+
+- MUST write commit messages in Japanese.
+- MUST keep commit messages as short and concise as possible.
+- MUST use bullet points in the body.
+- MUST separate the title and body with one blank line.
+
+## Required Format
+
+- MUST split the message into a title and body.
+- MUST use this structure:
+
+```text
+<TITLE>
+
+<BODY>
+```
+
+- MUST write the body as bullet points, for example:
+
+```text
+TSVエクスポートとセル加工ロジックの追加。その他1件。
+
+- TSVエクスポート機能を改善し、2行目のデータを追加。
+- 空行をスキップする処理を実装し、セルの値を適切に加工するロジックを追加。
+- 新しいsetup関数を作成し、初期設定完了時のアラート表示とボタン削除機能を実装。
+```
+
+## Content Rules
+
+- MUST use the title to summarize the main change.
+- SHOULD include `その他N件` in the title when there are additional meaningful changes.
+- MUST keep the title concise.
+- SHOULD describe the change and its purpose rather than listing only edited files.
+- MUST NOT create an overly long title that repeats every body bullet.

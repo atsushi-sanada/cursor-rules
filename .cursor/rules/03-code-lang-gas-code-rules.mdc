@@ -1,0 +1,80 @@
+---
+description: Google Apps Script coding rules for `.gs` files and JavaScript files inside Google Apps Script projects
+alwaysApply: false
+---
+
+# Google Apps Script Coding Rules
+
+## Coding Policy
+
+- MUST make each function's role clear.
+- MUST prioritize reuse and ease of change.
+- MUST run with the minimum necessary permissions.
+
+## Formatting
+
+- MUST use 2-space indentation.
+- SHOULD keep lines within 100 characters.
+- MUST use LF line endings and end files with a newline.
+- SHOULD format with `prettier --write` when available.
+- SHOULD lint with `eslint --fix` when available.
+
+## Naming
+
+- MUST use `camelCase` for functions and variables.
+- MUST use `UPPER_SNAKE_CASE` for constants.
+- MUST use `PascalCase` for ES6+ classes.
+- MUST use `kebab-case.gs` or `kebab-case.js` file names.
+
+## Documentation
+
+- MUST write JSDoc comments.
+- MUST include a module overview at the top of each file.
+- MUST include `@param` and `@return` for functions.
+- SHOULD add comments only for complex logic.
+
+## Variable Declarations
+
+- MUST use `const` and `let`; NEVER use `var`.
+- MUST use `const` when reassignment is unnecessary.
+
+## Error Handling and Logs
+
+- MUST explicitly catch exceptions with `try`/`catch` where failures can occur.
+- MUST choose `Logger.log`, `Logger.warn`, or `Logger.error` according to severity.
+- MUST rethrow errors when the caller or trigger should see the failure.
+
+## Script Structure and Triggers
+
+- MUST explicitly define entry points such as `doGet` and `doPost`.
+- MUST separate business logic from entry-point functions.
+- SHOULD keep entry points thin and call separate processing functions.
+
+## Performance and Quotas
+
+- SHOULD use batch operations such as `getValues` and `setValues`.
+- SHOULD consolidate API calls to reduce quota usage.
+- SHOULD use `CacheService` when it reduces repeated expensive work.
+
+## Security
+
+- MUST use `HtmlService.createTemplateFromFile` or equivalent safe templating for XSS-sensitive HTML output.
+- MUST store secrets in script properties or project properties.
+- NEVER hardcode secrets.
+
+## Testing
+
+- SHOULD use clasp plus local testing tools such as `gas-local` or Jest when available.
+- SHOULD place test code under `test/`.
+- SHOULD name test files `*.test.js`.
+
+## Quality Checklist
+
+- MUST verify 2-space indentation.
+- MUST verify `let` and `const` are used correctly.
+- MUST verify JSDoc comments are present.
+- MUST verify entry points and business logic are separated.
+- MUST verify batch processing and caching are used where useful.
+- MUST verify error handling is appropriate.
+- MUST verify secrets are managed through properties.
+- SHOULD verify Prettier and ESLint are applied when configured.

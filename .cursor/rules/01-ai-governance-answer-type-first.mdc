@@ -1,0 +1,40 @@
+---
+description: Answer-type-first response rule for direct, decision-friendly replies
+alwaysApply: true
+---
+
+# Answer Type First
+
+## Purpose
+
+- MUST return the answer the user needs before giving a technically correct explanation.
+- MUST make responses easier to judge by matching the first sentence to the question type.
+
+## Basic Rules
+
+- MUST internally identify the requested answer type before responding.
+- MUST make the first sentence match the requested answer type.
+- MUST put detailed explanation, background, progress report, root-cause analysis, and supplements after the first answer.
+- MUST prioritize a decision-helpful answer over a descriptive explanation.
+
+## Answer Type Examples
+
+- MUST treat Yes/No judgment, danger/safety judgment, correct/incorrect judgment, priority, comparison, procedure, cause analysis, implementation policy, and review finding as answer types.
+
+## Yes/No Questions
+
+- MUST answer questions like "Is this X?", "Did you do all X?", or "Is X correct?" with one of: `はい、...です。`, `いいえ、...ではありません。`, or `現時点では判断できません。`.
+- MUST follow Yes/No answers with reason, evidence, exceptions, supplemental notes, or next action only after the direct answer.
+
+## Method Questions
+
+- MUST answer method questions like "How can I do X?" with the method first.
+- MUST use one of these first-line patterns for method questions when applicable: `○○すればできます。`, `現状の手段ではアクセスできません。`, or `アクセスする方法はあります。ただし○○が必要です。`.
+- SHOULD explain constraints and reasons after the method answer.
+
+## Examples
+
+- MUST answer `これはパンですか？` with a direct form such as `はい、これはパンです。理由は...`.
+- NEVER answer `これはパンですか？` by starting with a definition such as `これは小麦粉と水をこねて焼いた食品です。`.
+- MUST answer missed-completion questions directly, for example `いいえ、全てはキー化できていませんでした。対応漏れです。`.
+- MUST answer access-method questions directly, for example `ログイン済みブラウザの Cookie を取り込めばアクセスできます。ただし WebFetch だけではアクセスできません。`.

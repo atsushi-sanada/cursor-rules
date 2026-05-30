@@ -1,0 +1,48 @@
+---
+description: CLI help message rules for command-line tools and scripts
+alwaysApply: false
+---
+
+# CLI Help Message Rules
+
+## Scope
+
+- MUST apply these rules to help output for CLI tools and scripts used in the project.
+
+## Basic Policy
+
+- MUST support both `--help` and `-h`.
+- SHOULD display help automatically when the command is run without arguments.
+- MUST explain each argument's meaning.
+- MUST explain each argument's expected format.
+- MUST state each argument's default value when a default exists.
+- MUST include execution examples.
+- MUST write help output to stdout.
+- SHOULD wrap help text around 80 to 100 characters for readability.
+
+## Required Sections
+
+- MUST include a `Usage` section.
+- MUST include an `Options` section when options exist.
+- MUST include an `Examples` section.
+- SHOULD align option descriptions enough to scan quickly.
+- SHOULD use a structure like:
+
+```text
+Usage:
+  mytool [options]
+
+Options:
+  -i, --input <path>        Input file path
+  -o, --output <path>       Output destination (default: ./out)
+  -v, --verbose             Show verbose logs (default: off)
+  -h, --help                Show this help
+
+Examples:
+  mytool -i data.csv -o result.json
+  mytool --verbose
+```
+
+## Completion Standard
+
+- MUST ensure a new user can run the command from the help text without reading source code.

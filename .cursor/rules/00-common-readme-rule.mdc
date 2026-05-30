@@ -1,0 +1,101 @@
+---
+description: README authoring rules for concise project entry documents
+globs: "**/README.md"
+alwaysApply: false
+---
+
+# README Authoring Rules
+
+## Role
+
+- MUST treat the README as the project's entry manual.
+- MUST write only the project overview and the shortest way to use it.
+- NEVER write detailed specifications, exception handling, or internal logic in the README; move those details to code or dedicated documentation.
+- NEVER try to explain everything in the README.
+- MUST keep the README short enough to understand on first pass.
+
+## Required Sections
+
+- MUST use exactly these top-level sections in this order: `概要`, `クイックスタート`, `セットアップ`, `使い方`, `その他`.
+- NEVER add extra top-level sections beyond those five.
+- MUST use this overall structure:
+
+```markdown
+# Project Name
+
+## 概要
+
+Write the purpose and what the project can do in 2 to 4 lines.
+
+### このツールについて
+
+- One capability per line
+- One capability per line
+- One capability per line
+
+Only include one important limitation or caution if it matters.
+
+---
+
+## クイックスタート
+
+1. Step
+2. Step
+3. Step
+
+---
+
+## セットアップ
+
+- Prerequisites
+
+1. Step
+2. Step
+3. Step
+
+---
+
+## 使い方
+
+1. Step
+2. Step
+3. Step
+
+---
+
+## その他
+
+- Tip
+- Option
+- See code documentation for details
+```
+
+## Section Rules
+
+- MUST write the `概要` section in 2 to 4 lines.
+- MUST state the concrete purpose and outcome of the project in `概要`.
+- NEVER use vague abstract wording in `概要`.
+- SHOULD include `### このツールについて` under `概要` when listing what the tool can do.
+- MUST write each capability as one bullet per feature.
+- SHOULD include one line for important limitations or cautions only when they materially affect use.
+- MUST keep `クイックスタート` to 3 steps or fewer.
+- MUST make each quick-start step executable or unambiguous.
+- MUST include prerequisites in `セットアップ`.
+- MUST keep setup instructions to 5 steps or fewer.
+- NEVER add explanatory paragraphs inside `セットアップ`; keep it procedural.
+- MUST use numbered lists in `使い方`.
+- MUST put usage details in `使い方` only when they are not already covered by `クイックスタート`.
+- MUST keep `その他` minimal.
+- SHOULD delete or move content from `その他` when it starts to grow.
+
+## Prohibited Content
+
+- NEVER write detailed specifications in the README.
+- NEVER write exception-handling details in the README.
+- NEVER write internal logic in the README.
+- NEVER let the README grow into a full manual when a short entry document is enough.
+
+## Final Check
+
+- MUST perform a final check that the README makes the tool identifiable at a glance, can be followed by copy-paste where appropriate, and leaves detailed behavior outside the README.
+- MUST rewrite the README when any of those three checks fails.

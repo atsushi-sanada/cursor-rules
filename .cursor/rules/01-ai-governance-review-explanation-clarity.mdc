@@ -1,0 +1,44 @@
+---
+description: Review explanation rules for code reviews, PR reviews, and implementation critiques
+alwaysApply: false
+---
+
+# Review Explanation Clarity
+
+## Purpose
+
+- MUST convert PR review and code review findings into a form the user can judge.
+- MUST NOT present review feedback as a raw list of technical facts.
+- MUST show whether there is a problem first, then explain impact, evidence, fix, and verification.
+
+## Basic Rules
+
+- MUST state what is wrong in one sentence before technical details.
+- MUST explain why it matters through user, operations, maintenance, data, or security impact.
+- MUST then point to the relevant code, behavior, or evidence.
+- MUST propose a concrete minimal fix.
+- MUST explain what to check after the fix.
+- MUST NOT explain only with specialist terms.
+- MUST add a plain-language explanation when a technical term affects the user's decision.
+- MUST change explanation style when the same explanation did not work; use a concrete example, analogy, or Before/After instead of repeating the same granularity.
+
+## Required Answer Order
+
+- MUST use this order for review answers:
+  1. Judgment: `問題あり`, `問題なし`, or `要確認`.
+  2. One-line summary: what is wrong.
+  3. Impact: user, operations, maintenance, data, or security impact.
+  4. Evidence: relevant code or behavior.
+  5. Fix: minimal correction.
+  6. Confirmation: what to verify after the fix.
+
+## Bad and Good Explanation
+
+- NEVER write only a technical sentence such as `This PR has an incomplete useEffect dependency array and causes a stale closure`.
+- MUST rewrite that kind of finding into a decision-friendly explanation such as: `問題ありです。画面上は最新データに見えても、内部処理が古い値を使う可能性があります。原因は useEffect の依存配列に必要な値が入っていないことです。userId と filters を依存配列に追加し、更新時に処理が再実行されることを確認してください。`
+
+## Multiple PR Review Findings
+
+- MUST order multiple PR review findings by severity and importance.
+- MUST compress each finding to problem, impact, and fix when there are multiple findings.
+- SHOULD put low-risk improvement suggestions after serious defects instead of mixing them together.
