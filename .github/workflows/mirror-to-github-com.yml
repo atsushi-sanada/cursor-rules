@@ -15,7 +15,8 @@ concurrency:
 
 jobs:
   mirror:
-    runs-on: [self-hosted, Linux, X64]
+    # Match org runner labels (self-hosted, Linux, X64). Use self-hosted alone if jobs stay pending.
+    runs-on: self-hosted
     permissions:
       contents: read
     steps:
