@@ -1,5 +1,5 @@
 # Sync this repository (GHE canonical) to GitHub.com for Cursor Remote Rules.
-# Requires repository secret: GITHUB_COM_MIRROR_TOKEN
+# Requires repository secret: MIRROR_TO_GITHUB_COM_TOKEN
 
 name: Mirror to GitHub.com
 
@@ -26,13 +26,13 @@ jobs:
 
       - name: Mirror branches and tags to GitHub.com
         env:
-          MIRROR_TOKEN: ${{ secrets.GITHUB_COM_MIRROR_TOKEN }}
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TO_GITHUB_COM_TOKEN }}
           MIRROR_URL: https://github.com/atsushi-sanada/cursor-rules.git
         run: |
           set -euo pipefail
 
           if [ -z "${MIRROR_TOKEN}" ]; then
-            echo "::error::Secret GITHUB_COM_MIRROR_TOKEN is not set on this repository."
+            echo "::error::Secret MIRROR_TO_GITHUB_COM_TOKEN is not set on this repository."
             exit 1
           fi
 

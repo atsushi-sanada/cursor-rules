@@ -42,7 +42,7 @@ cd cursor-rules
 1. GitHub.com で Personal Access Token（classic）または fine-grained token を作成します。
    - classic: `repo` スコープ
    - fine-grained: 対象リポジトリ `atsushi-sanada/cursor-rules` に **Contents: Read and write**
-2. GHE の `doge/cursor-rules` → **Settings** → **Secrets and variables** → **Actions** に、名前 `GITHUB_COM_MIRROR_TOKEN` でトークンを登録します。
+2. GHE の `doge/cursor-rules` → **Settings** → **Secrets and variables** → **Actions** に、名前 `MIRROR_TO_GITHUB_COM_TOKEN` でトークンを登録します（`GITHUB_` で始まる名前は GHE では登録できません）。
 3. このリポジトリの workflow を GHE の `main` に push します。
 4. **Actions** タブで `Mirror to GitHub.com` が成功することを確認します。手動実行は **Run workflow**（`workflow_dispatch`）でも可能です。
 
