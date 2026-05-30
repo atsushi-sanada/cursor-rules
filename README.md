@@ -1,112 +1,41 @@
-# cursor-rules（開発ルール集）
-
-エディタ/IDE での開発における共通ルール集です。**「何をどの順で読めば迷わないか」**に絞って案内します。
+# cursor-rules
 
 ## 概要
 
-チーム開発での品質と効率を上げるための **Markdownルール／READMEルール／コード規約／AIガバナンス** をまとめたリポジトリです。
-
-### このツールについて
-
-<!-- 最初に期待値を揃えて迷いを減らす -->
-
-- **できること（1機能1行）**
-  - 必要なルールファイルを選んで、プロジェクトにコピペして導入できる
-  - README・Markdown・命名・フォルダ構成・言語別コード規約を、最低限の型として揃えられる
-  - AI利用時のガバナンスやロール別ルールを、チーム標準として共有できる
-  - 日本語のプロンプト・ルール・スキルを、AIが実行しやすい英語へ変換する Cursor Skill を使える
-- **未対応 / 制約 / 注意**：このリポジトリ自体は実行ツールではありません（ルール文書の集約）。
-- **設定 / カスタマイズ**：各 `.md` をプロジェクト向けに編集して使用します（詳細は「使い方」参照）。
-
----
+Cursor で使う開発ルールと AI 向け運用ルールを管理するリポジトリです。
+日本語の原本を `00_common/`、`01_ai-governance/`、`02_ai-role/`、`03_code/` に置き、AI が実行しやすい英語版を `.cursor/rules/*.mdc` として運用します。
+このリポジトリ自体は実行ツールではなく、Cursor Rules と Skill を管理するためのルール集です。
 
 ## クイックスタート
 
-### 初回のみ
-
-1. このリポジトリを clone して手元で参照できるようにする
-2. `00_common/` を先に読み、文書ルール（README/Markdown）をプロジェクトに導入する
-3. `03_code/` から、対象言語のコード規約とフォルダ構成ルールを導入する
-
-### 毎回
-
-1. ルールを更新する（pull）／必要な差分だけプロジェクトへ反映する
-2. README や規約が増えすぎた場合は「入口に戻す」（要点だけ残し、詳細は各ファイルへ逃がす）
-
----
+1. Cursor でこのリポジトリを開き、`.cursor/rules/*.mdc` を現在の有効ルールとして使います。
+2. ルールを直すときは日本語原本の `.md` を先に編集します。
+3. `/translate-ai-guidance-to-english @対象ファイル` で英語版 `.mdc` に反映します。
 
 ## セットアップ
 
-### 必要なもの
-
-- Git
-- （任意）Node.js / Python / Docker（プロジェクト側の事情に合わせる）
-
-### インストール（参照用にclone）
+1. Git を用意します。
+2. リポジトリを clone します。
 
 ```bash
 git clone https://github.com/atsushi-sanada/cursor-rules.git
 cd cursor-rules
 ```
 
----
+3. Cursor で `cursor-rules` フォルダを開きます。
+4. 他プロジェクトで使う場合は、必要な `.cursor/rules/*.mdc` と `.cursor/skills/` を対象プロジェクトへコピーします。
 
 ## 使い方
 
-このリポジトリは **「必要なルールだけ選んでコピペ」**する運用を想定しています。
+1. 日本語原本を読む場合は、共通ルールから順に確認します: `00_common/`、`01_ai-governance/`、`02_ai-role/`、`03_code/`。
+2. Cursor に読ませる実運用ファイルは `.cursor/rules/*.mdc` を使います。
+3. 日本語原本を更新したら、`/translate-ai-guidance-to-english @対象ファイル` を実行して `.mdc` を更新します。
+4. 新しいルールを追加するときは、まず日本語の `.md` を作り、次に英語の `.mdc` を作ります。
+5. Skill の内容を直すときは `.cursor/skills/translate-ai-guidance-to-english/` を更新します。
 
-### まず読む（おすすめ順）
+## その他
 
-1. `00_common/readme_rule.md`（READMEの型）
-2. `00_common/markdown_rule.md`（Markdown記法の統一）
-3. `03_code/folder_structure_rules.md`（フォルダ構成の考え方）
-4. `03_code/source_code_rules.md`（ソースコード全般の共通ルール）
-5. `01_ai-governance/ai_response_governance.md`（AI応答の共通ルール）
-6. `01_ai-governance/answer_type_first.md`（最初の一文を回答型に合わせるルール）
-7. `01_ai-governance/review_explanation_clarity.md`（レビュー説明を判断しやすくするルール）
-8. `03_code/lang/`（言語別ルール）
-9. `.cursor/skills/translate-ai-guidance-to-english/`（日本語ルールの英語化スキル）
-
-### 導入のやり方
-
-- プロジェクトに合わせて、必要な `.md` をコピーして配置します
-- チームで使う場合は、参照先を固定するために「プロジェクト側の docs/ や rules/ に置く」運用がおすすめです
-- Cursor Skill として使う場合は、`.cursor/skills/translate-ai-guidance-to-english/` をプロジェクトに含めます
-
----
-
-## プロジェクト構成
-
-```
-cursor-rules/
-├── .cursor/skills/         # プロジェクト共有の Cursor Skill
-├── 00_common/               # 共通ルール（README/Markdown/命名など）
-├── 01_ai-governance/        # AIガバナンスルール
-├── 02_ai-role/              # AIロール別ルール
-├── 03_code/                 # コード・スクリプトルール
-└── README.md                # この説明書
-```
-
----
-
-## 貢献（Contributing）
-
-Issue / Pull Request を歓迎します。変更する場合は「どのプロジェクトで困ったか」「どう改善するか」を一緒に書いてください。
-
----
-
-## License
-
-MIT
-
----
-
-## Author
-
-- 真田 淳史（[@atsushi-sanada](https://github.com/atsushi-sanada)）
-
----
-
-## References
-
-- [Google Style Guides](https://github.com/google/styleguide)
+- `.md` は人間が読む原本、`.mdc` は Cursor Agent が実行する英語ルールです。
+- README には運用の入口だけを書き、詳細は各ルールファイルと Skill 内ドキュメントを参照します。
+- 変更をコミットするときは、ルール追加・Skill 更新・README 更新を責務単位で分けます。
+- License: MIT
