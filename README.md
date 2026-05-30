@@ -14,6 +14,7 @@
   - 必要なルールファイルを選んで、プロジェクトにコピペして導入できる
   - README・Markdown・命名・フォルダ構成・言語別コード規約を、最低限の型として揃えられる
   - AI利用時のガバナンスやロール別ルールを、チーム標準として共有できる
+  - 日本語のプロンプト・ルール・スキルを、AIが実行しやすい英語へ変換する Cursor Skill を使える
 - **未対応 / 制約 / 注意**：このリポジトリ自体は実行ツールではありません（ルール文書の集約）。
 - **設定 / カスタマイズ**：各 `.md` をプロジェクト向けに編集して使用します（詳細は「使い方」参照）。
 
@@ -64,11 +65,13 @@ cd cursor-rules
 6. `01_ai-governance/answer_type_first.md`（最初の一文を回答型に合わせるルール）
 7. `01_ai-governance/review_explanation_clarity.md`（レビュー説明を判断しやすくするルール）
 8. `03_code/lang/`（言語別ルール）
+9. `.cursor/skills/translate-ai-guidance-to-english/`（日本語ルールの英語化スキル）
 
 ### 導入のやり方
 
 - プロジェクトに合わせて、必要な `.md` をコピーして配置します
 - チームで使う場合は、参照先を固定するために「プロジェクト側の docs/ や rules/ に置く」運用がおすすめです
+- Cursor Skill として使う場合は、`.cursor/skills/translate-ai-guidance-to-english/` をプロジェクトに含めます
 
 ---
 
@@ -76,6 +79,7 @@ cd cursor-rules
 
 ```
 cursor-rules/
+├── .cursor/skills/         # プロジェクト共有の Cursor Skill
 ├── 00_common/               # 共通ルール（README/Markdown/命名など）
 ├── 01_ai-governance/        # AIガバナンスルール
 ├── 02_ai-role/              # AIロール別ルール
