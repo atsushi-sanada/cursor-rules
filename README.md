@@ -2,62 +2,52 @@
 
 ## 概要
 
-Cursor で使う開発ルールと AI 向け運用ルールを管理するリポジトリです。
-日本語の原本を `00_common/`、`01_ai-governance/`、`02_ai-role/`、`03_code/` に置き、AI が実行しやすい英語版を `.cursor/rules/*.mdc` として運用します。
-このリポジトリ自体は実行ツールではなく、Cursor Rules と Skill を管理するためのルール集です。
+Cursor 向けのチーム共通ルールを一か所で管理し、各プロジェクトまたは Cursor 設定へ配布するリポジトリです。日本語の原稿（`.md`）を編集し、英語の実行用ファイル（`.mdc`）に反映して使います。
 
-## クイックスタート
+### このリポジトリについて
 
-1. Cursor でこのリポジトリを開き、`.cursor/rules/*.mdc` を現在の有効ルールとして使います。
-2. ルールを直すときは日本語原本の `.md` を先に編集します。
-3. `/translate-ai-guidance-to-english @対象ファイル` で英語版 `.mdc` に反映します。
+- 原稿（日本語 `.md`）: `00_common` / `01_ai-governance` / `02_ai-role` / `03_code`
+- 実行用（英語 `.mdc`）: `.cursor/rules/`
+- `main` へ push すると GitHub.com にミラーされ、**Remote Rules** から参照できる
+
+### 適用方法
+
+| 方法 | 用途 | 操作 |
+| --- | --- | --- |
+| **Project Rules** | プロジェクト単位でルールを適用 | `.mdc` をそのプロジェクトの `.cursor/rules/` に配置 |
+| **Remote Rules** | GitHub 上の同一版を参照 | Cursor で `atsushi-sanada/cursor-rules` を指定 |
+| **User Rules** | 全プロジェクトで共通適用 | Cursor 設定 → Rules → User Rules へ **手動でコピー** |
+
+User Rules はリポジトリと自動同期されません。内容を更新した場合は、設定画面へ再度貼り付けてください。
+
+---
 
 ## セットアップ
 
-1. Git を用意します。
-2. リポジトリを clone します。
+- Cursor（Project Rules 対応）
+- ルールを編集・配布する場合は Git
 
-```bash
-git clone https://github.com/atsushi-sanada/cursor-rules.git
-cd cursor-rules
-```
+1. リポジトリを clone する
+2. 「適用方法」の表から利用方法を選ぶ
+3. Project Rules の場合: 使う `.mdc` を作業プロジェクトの `.cursor/rules/` に配置する
+4. Cursor でプロジェクトを開き、ルールが効いているか確認する
+5. `alwaysApply: true`（常時適用）と `globs`（対象ファイルの限定）を確認する
 
-3. Cursor で `cursor-rules` フォルダを開きます。
-4. 他プロジェクトで使う場合は、必要な `.cursor/rules/*.mdc` と `.cursor/skills/` を対象プロジェクトへコピーします。
+---
 
 ## 使い方
 
-1. 日本語原本を読む場合は、共通ルールから順に確認します: `00_common/`、`01_ai-governance/`、`02_ai-role/`、`03_code/`。
-2. Cursor に読ませる実運用ファイルは `.cursor/rules/*.mdc` を使います。
-3. 日本語原本を更新したら、`/translate-ai-guidance-to-english @対象ファイル` を実行して `.mdc` を更新します。
-4. 新しいルールを追加するときは、まず日本語の `.md` を作り、次に英語の `.mdc` を作ります。
-5. Skill の内容を直すときは `.cursor/skills/translate-ai-guidance-to-english/` を更新します。
+1. 日本語原稿（`00_common/` などの `.md`）を編集する
+2. 対応する `.cursor/rules/*.mdc` を更新する
+3. 配布する
+   - Project Rules: 各リポジトリの `.cursor/rules/` へコピー
+   - Remote Rules: `main` に push（`MIRROR_TO_GITHUB_COM_TOKEN` 設定時は GitHub.com に同期）
+   - User Rules: 設定画面へ手動で貼り付け
 
-## GitHub.com への自動ミラー（GHE 正本）
-
-正本は `https://github.enish.jp/doge/cursor-rules.git` です。`main` へ push すると、GitHub Actions が `https://github.com/atsushi-sanada/cursor-rules.git` へブランチとタグを同期します。
-
-### 初回セットアップ（GHE 側）
-
-1. GitHub.com で Personal Access Token（classic）または fine-grained token を作成します。
-   - classic: `repo` スコープ
-   - fine-grained: 対象リポジトリ `atsushi-sanada/cursor-rules` に **Contents: Read and write**
-2. GHE の `doge/cursor-rules` → **Settings** → **Secrets and variables** → **Actions** に、名前 `MIRROR_TO_GITHUB_COM_TOKEN` でトークンを登録します（`GITHUB_` で始まる名前は GHE では登録できません）。
-3. このリポジトリの workflow を GHE の `main` に push します。
-4. **Actions** タブで `Mirror to GitHub.com` が成功することを確認します。手動実行は **Run workflow**（`workflow_dispatch`）でも可能です。
-
-### 反映タイミング
-
-- GHE の `main` への push 直後に workflow が起動します。
-- 通常は Runner の待ち時間を含め **1〜5 分程度** で GitHub.com に反映されます（Runner の混雑状況により変動します）。
-
-### Runner ラベル
-
-workflow は `doge` 組織の self-hosted Runner で、`runs-on: [self-hosted, linux]` を指定します（`redmine-work` など社内の他プロジェクトと同じ指定）。Runner 画面に `Linux` / `X64` と表示されていても、workflow 側は **小文字の `linux`** を使います。
+---
 
 ## その他
 
-- `.md` は人間が読む原本、`.mdc` は Cursor Agent が実行する英語ルールです。
-- README には運用の入口だけを書き、詳細は各ルールファイルと Skill 内ドキュメントを参照します。
-- 変更をコミットするときは、ルール追加・Skill 更新・README 更新を責務単位で分けます。
-- License: MIT
+- 詳細は各 `.md` / `.mdc` を参照する
+- `.cursor/cursor-documents/` は Git 管理外
+- **Project Rules**: プロジェクト単位 / **User Rules**: ユーザー全体 / **globs**: 指定したファイルのみルール適用
