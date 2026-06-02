@@ -4,91 +4,85 @@ globs: "**/README.md"
 alwaysApply: false
 ---
 
-# 00-common-readme-rule.mdc - README Authoring Rules
+# README Authoring Rules
 
 ## Role
 
-- MUST treat the README as the project's entry manual.
-- MUST write only the project overview and the steps to start using it.
-- NEVER write detailed specifications, exception handling, or internal logic in the README; move those details to code or dedicated documentation.
-- NEVER try to explain everything in the README.
-- MUST keep the README short enough to understand on first pass.
+- MUST treat the README as the project's entry manual with purpose, structure, and steps to start using it.
+- MUST move detailed specifications, exceptions, and internal logic to code or dedicated documentation.
+- MUST keep the README short enough to read on one screen.
 
 ## Required Sections
 
-- MUST use exactly these top-level sections in this order: `概要`, `セットアップ`, `使い方`, `その他`.
-- NEVER add extra top-level sections beyond those four.
-- NEVER add a `クイックスタート` section.
+- MUST write purpose as a bullet list immediately under `# Title` (2 to 4 items).
+- MUST NOT add `## 概要`.
+- MUST NOT add `クイックスタート`.
+- MUST NOT insert `---` between sections.
 
-## Composition Model
+### Pattern A (split procedures)
 
-- MUST help readers follow **purpose → state → method**:
-  1. State **purpose** (why the project exists) in the first 2 to 4 lines of `概要`.
-  2. State **outcome** (what the reader can decide or do after reading) in `概要`.
-  3. Place **method** (first use and ongoing operation) in `セットアップ` and `使い方`.
-- MUST NOT lead with method steps before purpose and outcome are clear in `概要`.
+- MUST use these `##` sections in this order: `構成`, `セットアップ`, `使い方`, `その他`.
 
-## Conclusion, Facts, Next Action
+### Pattern B (single linear flow)
 
-- MUST use **conclusion → facts → next action** inside each section when applicable:
-  - `概要`: conclusion and facts (structure, paths, constraints).
-  - `セットアップ` and `使い方`: next actions as numbered steps.
-- MUST use bullets or tables for facts.
-- MUST use numbered lists for procedures.
-- MUST NOT mix facts and procedures in the same paragraph.
+- MUST use these `##` sections in this order: `構成`, `基本フロー`, `その他`.
+- MUST choose Pattern B when the workflow is linear from first use through completion.
+- MUST keep `## 基本フロー` as a numbered list only, with at most 6 steps.
+- MUST NOT mix Pattern A and Pattern B procedure headings in the same README.
 
-## Multiple Usage Paths
+## Writing Rules
 
-- MUST add a subsection such as `### 適用方法` under `概要` when more than one path exists.
-- MUST compare paths in a table with columns **method / use case / action**.
-- MUST state the highest-impact operational constraint in **one line immediately after the table**.
-- MUST NOT repeat the same constraint across sections.
+### Overall Flow
 
-## Priority and Specificity
+| Order | Content | Location |
+| --- | --- | --- |
+| 1 | Purpose and outcome | Bullet list under `# Title` (2 to 4 items) |
+| 2 | Structure (paths and roles) | Under `## 構成` |
+| 3 | Procedures | Pattern A: `セットアップ` and `使い方` / Pattern B: `基本フロー` |
 
-- MUST keep `セットアップ` to first-use actions only, with at most 5 steps.
-- MUST keep `使い方` for update, distribution, and routine operation.
-- MUST write each step so **when, where, and what happens** is clear.
-- MUST show branching with a table or explicit branches in steps; MUST NOT defer the reader without a default path.
+- MUST write one sentence per purpose bullet under the title.
+- MUST NOT lead with procedures before purpose is clear under the title.
+- MUST use bullets or tables for structure and numbered lists for procedures.
+- MUST NOT mix structure and procedures in the same paragraph.
+- MUST NOT add background or specification text inside procedural sections.
+- MUST NOT start procedures with clone-only or environment-only steps; start from the core workflow.
 
-## Self-Check Before Finish
+### Per Section
 
-- MUST verify that `概要` alone explains purpose and post-read outcome.
-- MUST verify that facts and procedures are separated.
-- MUST verify that multiple paths are selectable from one table when needed.
-- MUST verify that the most important constraint appears in one place only.
-- MUST verify that readers can tell whether to read `セットアップ` or `使い方`.
+| Section | Content | Limits |
+| --- | --- | --- |
+| Under `# Title` | What the project is and what it enables | 2 to 4 bullets; one sentence per bullet |
+| `構成` | Main folders and files with roles | One item per line |
+| `セットアップ` | First-use steps (Pattern A) | Numbered list only; at most 5 steps |
+| `使い方` | Update, distribution, routine operation (Pattern A) | MUST NOT duplicate first-use steps |
+| `基本フロー` | End-to-end steps (Pattern B) | Numbered list only; at most 6 steps |
+| `その他` | Minimal terms and pointers to detailed docs | Keep minimal; delete when it grows |
 
-## Section Rules
+### Do Not Write in README
 
-- MUST write the `概要` section in 2 to 4 lines.
-- MUST state the concrete purpose and outcome of the project in `概要`.
-- NEVER use vague abstract wording in `概要`.
-- SHOULD include `### このリポジトリについて` under `概要` when listing what the project contains.
-- MUST write each capability or fact as one bullet per item.
-- MUST keep setup instructions to 5 steps or fewer in `セットアップ`.
-- MUST include first-use actions such as clone, placement, and verification in `セットアップ` when needed.
-- NEVER add explanatory paragraphs inside `セットアップ`; keep it procedural.
-- MUST use numbered lists in `使い方`.
-- MUST write update, distribution, and routine operation steps in `使い方`.
-- MUST keep `その他` minimal.
+- Clone, Cursor launch, or similar prerequisite bullets before the procedure list.
+- A first step that is only clone or environment setup without core workflow content.
+- Detailed operational constraints that belong in dedicated README files or runbooks.
+- Headings such as `### このプロジェクトについて` when `## 構成` is clearer.
+- Horizontal rules (`---`) between sections.
 
 ## Prohibited Content
 
-- NEVER write detailed specifications in the README.
-- NEVER write exception-handling details in the README.
-- NEVER write internal logic in the README.
-- NEVER let the README grow into a full manual when a short entry document is enough.
-- NEVER add a `クイックスタート` section.
+- NEVER write specifications, exception handling, or internal logic in the README.
+- NEVER add `## 概要` or `### このプロジェクトについて`.
+- NEVER repeat the same caution across sections.
+- NEVER lead with procedures before purpose appears under the title.
+- NEVER let the README exceed one-screen length.
+- NEVER mix Pattern A and Pattern B procedure sections.
+- NEVER insert `---` between sections.
 
 ## Final Check
 
-- MUST verify that the project is identifiable at a glance.
-- MUST verify that readers can choose their usage path from a table or equivalent list when multiple paths exist.
-- MUST verify that steps are executable without reading other documents first.
-- MUST verify that detailed behavior lives outside the README.
-- MUST verify that purpose, state, and method are in order.
-- MUST verify that facts and procedures are separated.
-- MUST verify that the most important constraint is consolidated in one place.
-- MUST verify that no `クイックスタート` section exists.
+- MUST verify purpose is clear from the title and the bullets immediately below it.
+- MUST verify structure is listed under `## 構成`.
+- MUST verify linear workflows use `基本フロー` only, and split workflows use `セットアップ` and `使い方`.
+- MUST verify the first procedure step is not clone-only or environment-only.
+- MUST verify structure and procedures are separated.
+- MUST verify steps are executable by copy-paste.
+- MUST verify no `---` appears between sections.
 - MUST rewrite the README when any check fails.
